@@ -33,6 +33,7 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  text-align: center;
 }
 
 button {
@@ -66,3 +67,20 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #cd0000;
+  font-size: 3rem;
+  text-align: center;
+  text-shadow:
+    -1px -1px 0 #ffffff,
+     1px -1px 0 #ffffff,
+    -1px  1px 0 #ffffff,
+     1px  1px 0 #ffffff;
+
+
+}
+

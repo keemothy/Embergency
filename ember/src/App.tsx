@@ -1,35 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import FireReact from "./firereact";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
+    <div>
+      <div className="title">
+        <h1>Embergency</h1>
+      </div>
+
+      <FireReact></FireReact>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <h2>text</h2>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3120.8063354840315!2d-121.7617125!3d38.538232199999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80ead37f7489fa3f%3A0xecbfbb24087e8334!2sUniversity%20of%20California%2C%20Davis!5e0!3m2!1sen!2sus!4v1745097635450!5m2!1sen!2sus"
+          width="600"
+          height="450"
+          loading="lazy"
+        ></iframe>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
