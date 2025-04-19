@@ -34,7 +34,7 @@ const NearestFireFinder = () => {
   };
 
   const fetchNearestFire = async () => {
-     process.env.anotherapiKey; // Replace this with your actual API key
+    const apiKey = ""; // Replace this with your actual API key
     const geocodeURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
       locationInput
     )}&key=${apiKey}`;
