@@ -1,19 +1,18 @@
 const apiKey = process.env.apiKey;
 
-const geocodingUrl = "http://api.openweathermap.org/geo/1.0/direct?q="; // This is beginning of the API call we use to convert city names to coordinates!
+const geocodingUrl = "http://api.openweathermap.org/geo/1.0/direct?q=";
 const weatherUrl = "https://api.openweathermap.org/data/2.5/weather?";
 const nearestFire = document.getElementById('nearest-fire');
 const weatherDisplay = document.getElementById('aisplay');
 
 async function getLatLon(city) {
-  // Let's create the API url. (CLUE #2)
   const url = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + apiKey;
 
-  // Send a GET request to the url that you wrote above! (CLUE #3)
-  const response = await fetch(url);
-  const data = await response.json(); //This line parses the response into JSON format so we can use it!
 
-  // Let's return a JavaScript object here! (CLUE #4)
+  const response = await fetch(url);
+  const data = await response.json(); 
+
+
   return {
     "lat": data[0].lat,
     "lon": data[0].lon
@@ -78,9 +77,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (userInput === '') {
       // Add subtle shake animation for empty input
       inputField.classList.add('shake');
+      messageDisplay.innerHTML = "Please enter a city name";
+      messageDisplay.classList.add('show');
+
+
       setTimeout(() => {
         inputField.classList.remove('shake');
-      }, 500);
+        messageDisplay.classList.remove('show');
+      }, 3000);
       return;
     }
     
@@ -107,22 +111,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const lonFire = coordinateData.lon;
 
     const fireData = await getNearestFire(latFire, lonFire);
-
-    
-    // Add some natural-themed flair to the message
-    const natureEmojis = ['🌿', '🌱', '🍃', '🌲', '🌸', '🍂', '🌺'];
-    const randomEmoji = natureEmojis[Math.floor(Math.random() * natureEmojis.length)];
+   
     
     // Set a timeout to ensure the transition works
     setTimeout(() => {
+  
 
-      // if (!fireData.error) {
-      //   } else {
-      //   nearestFire.innerHTML = "No fire data available.";
-      //   }
+      if (!fireData.error) {
+        messageDisplay.innerHTML = "🔥 Nearest fire: " + fireData.name + "<br>Lat: " + fireData.latitude + ", Lon: " + fireData.longitude;;
 
-      nearestFire.innerHTML = "🔥 Nearest fire: " + fireData.name + "<br>Lat: " + fireData.latitude + ", Lon: " + fireData.longitude;
-      messageDisplay.innerHTML = "🔥 Nearest fire: " + fireData.name + "<br>Lat: " + fireData.latitude + ", Lon: " + fireData.longitude;;
+        } else {
+        messageDisplay.innerHTML = "There are no current fires nearby :D";
+        }
+
       messageDisplay.classList.add('show');
     }, 300);
   }
