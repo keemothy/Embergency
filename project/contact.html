@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Embergency Contact</title>
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="src/styles/main.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- Tailwind (utility layer for quick layout tweaks) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-[Poppins] text-white relative overflow-hidden">
+  <!-- Particle canvas (background) -->
+  <div id="particles" class="fixed inset-0 -z-10"></div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 w-full backdrop-blur bg-black/30 border-b border-white/10 z-20">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+      <h2 class="flex items-center text-xl font-semibold tracking-wide" style="font-family:'Montserrat',serif">
+        <img src="https://i.postimg.cc/C5ztfjyb/image-2.png" alt="Logo" class="inline-block h-5 mr-2 align-middle" />
+        EMBERGENCY
+      </h2>
+      <ul class="hidden sm:flex space-x-6 text-sm font-medium">
+        <li><a href="index.html" class="hover:text-[var(--ember-light)] transition">Home</a></li>
+        <li><a href="#features" class="hover:text-[var(--ember-light)] transition">Features</a></li>
+        <li><a href="contact.html" class="hover:text-[var(--ember-light)] transition">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main / Contact Section -->
+  <main class="container mx-auto flex flex-col items-center justify-center text-center px-4 relative h-screen">
+    <div class="content mt-24 max-w-3xl">
+      <h1 class="text-4xl md:text-6xl font-semibold drop-shadow-lg mb-3" style="font-family:'Montserrat',serif;">Contact Us</h1>
+      <form class="w-full max-w-xl mx-auto space-y-4">
+        <div>
+          <input type="text" placeholder="Name" class="w-full p-4 rounded-lg bg-white/90 text-gray-900" />
+        </div>
+        <div>
+          <input type="email" placeholder="Email" class="w-full p-4 rounded-lg bg-white/90 text-gray-900" />
+        </div>
+        <div>
+          <textarea rows="5" placeholder="Message" class="w-full p-4 rounded-lg bg-white/90 text-gray-900"></textarea>
+        </div>
+        <button type="submit" class="px-6 py-3 bg-[var(--ember-medium)] text-white rounded-lg">Send Message</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full text-center text-xs py-4 backdrop-blur bg-black/20 border-t border-white/10">
+    &copy; 2025 Embergency • Built for first responders.
+  </footer>
+
+  <!-- Scripts -->
+  <script src="src/js/particles.js"></script>
+  <script src="src/js/gradients.js"></script>
+  <script src="src/js/main.js"></script>
+</body>
+</html>

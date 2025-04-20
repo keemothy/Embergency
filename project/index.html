@@ -3,34 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Embergency App</title>
+  <title>Embergency Fire Locator</title>
+  <!-- Core Styles -->
   <link rel="stylesheet" href="src/styles/main.css">
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind (utility layer) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Auto-scroll to features on first load -->
+  <script>
+    if (!window.location.hash) {
+      window.location.replace(window.location.origin + window.location.pathname + '#features');
+    }
+  </script>
 </head>
+<body class="font-[Poppins] text-white relative overflow-hidden">
+  <!-- Particle canvas -->
+  <div id="particles" class="fixed inset-0 -z-10"></div>
 
-<body>
-  <div class="container">
-    <div id="particles"></div>
-    <div class="content">
-      <h1>Embergency Fire Locator</h1>
-      <div class="input-container">
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 w-full backdrop-blur bg-black/30 border-b border-white/10 z-20">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+      <h2 class="flex items-center text-xl font-semibold tracking-wide" style="font-family:'Montserrat',serif">
+        <img src="https://i.postimg.cc/C5ztfjyb/image-2.png" alt="Logo" class="inline-block h-5 mr-2 align-middle" />
+        EMBERGENCY
+      </h2>
+      <ul class="hidden sm:flex space-x-6 text-sm font-medium">
+        <li><a href="#" class="hover:text-[var(--ember-light)] transition">Home</a></li>
+        <li><a class="hover:text-[var(--ember-light)] transition">Features</a></li>
+        <li><a href="contact.html" class="hover:text-[var(--ember-light)] transition">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
+  <!-- Hero Section -->
+  <main class="container mx-auto flex flex-col items-center justify-center text-center px-4 relative">
+    <div class="content mt-24 max-w-3xl">
+      <!-- Inline Logo -->
+      <img src="https://i.postimg.cc/13j8GSN6/image-1.png" alt="Embergency logo" class="mx-auto w-44 md:w-52 mb-6" />
+
+      <!-- Hero Tagline -->
+      <p class="mx-auto max-w-xl text-base md:text-lg font-light mb-8">
+        Our revolutionary interface cross‑references active wildfire zones with cell‑tower coverage—helping first responders know exactly where emergency aid (and connectivity) is needed most.
+      </p>
+
+      <!-- Search -->
+      <div class="input-container w-full max-w-xl mx-auto">
         <input type="text" id="nature-input" placeholder="Enter location here...">
         <button id="submit-btn">Send</button>
-        
       </div>
-      <div id="message-display">
-        
-          <p id="nearest-fire"></p>
-          <h2 id="main-weather"></h2>
-          <p id="weather-description"></p>
-      
-      </div>
-    </div>
-  </div>
 
+      <!-- Dynamic Message -->
+      <div id="message-display" class="mt-8">
+        <p id="nearest-fire"></p>
+        <h2 id="main-weather"></h2>
+        <p id="weather-description"></p>
+      </div>
+
+      <!-- Features -->
+      <section id="features" class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+        <div class="p-6 rounded-lg backdrop-blur-md bg-white/10 border border-white/10">
+          <h3 class="text-base font-semibold mb-2">Real‑time Fire Data</h3>
+          <p class="text-sm">Pulls CalFire & NASA FIRMS every 5 minutes.</p>
+        </div>
+        <div class="p-6 rounded-lg backdrop-blur-md bg-white/10 border border-white/10">
+          <h3 class="text-base font-semibold mb-2">Cell‑Tower Overlay</h3>
+          <p class="text-sm">Highlights coverage gaps for precise deployments.</p>
+        </div>
+        <div class="p-6 rounded-lg backdrop-blur-md bg-white/10 border border-white/10">
+          <h3 class="text-base font-semibold mb-2">Offline‑first Alerts</h3>
+          <p class="text-sm">Progressive‑web caching keeps data available in dead zones.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full text-center text-xs py-4 backdrop-blur bg-black/20 border-t border-white/10">
+    &copy; 2025 Embergency • Built for first responders.
+  </footer>
+
+  <!-- Scripts -->
   <script src="src/js/particles.js"></script>
   <script src="src/js/gradients.js"></script>
   <script src="src/js/main.js"></script>
