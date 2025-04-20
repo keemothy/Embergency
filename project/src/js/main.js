@@ -5,6 +5,10 @@ const weatherUrl = "https://api.openweathermap.org/data/2.5/weather?";
 const nearestFire = document.getElementById('nearest-fire');
 const weatherDisplay = document.getElementById('aisplay');
 
+
+
+
+
 async function getLatLon(city) {
   const url = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + apiKey;
 
@@ -25,6 +29,7 @@ async function getNearestFire(lat, lon) {
   const place = lat + "," + lon;
   const url = "https://data.api.xweather.com/fires/closest?p=" + place + "&format=json&client_id=" + clientId + "&client_secret=" + clientSecret;
 
+
   try {
     const response = await fetch(url);
     const data = await response.json();
@@ -43,6 +48,29 @@ async function getNearestFire(lat, lon) {
     return { error: "Something went wrong." };
   }
 }
+
+async function getCellTowers(currLat, currLon) {
+  const cellKey = process.env.cellKey;
+  const cellTowerUrl = "https://us1.unwiredlabs.com/v2/reverse?token=" + cellKey + "&lat=" + currLat + "&lon=" + currLon;
+
+  
+  try {
+    const response = await fetch(cellTowerUrl);
+    const data = await response.json();
+
+    if (data && data.address && data.address.display_name) {
+      return {
+        cellTowerName: data.address.display_name
+      };
+    } else {
+      return { error: "No address data found" };
+    }
+  } catch (error) {
+    console.error("Failed to fetch cell tower data:", error);
+    return { error: "Something went wrong." };
+  }
+}
+
 
 // Main application functionality
 document.addEventListener('DOMContentLoaded', function() {
@@ -107,10 +135,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const coordinateData = await getLatLon(userInput);
     
     // Now we have access to the latitude and longitude of the fire
-    const latFire = coordinateData.lat;
-    const lonFire = coordinateData.lon;
+    const latUserInput = coordinateData.lat;
+    const lonUserInput = coordinateData.lon;
 
-    const fireData = await getNearestFire(latFire, lonFire);
+    const fireData = await getNearestFire(latUserInput, lonUserInput);
+    const cellData = await getCellTowers(fireData.latitude, fireData.longitude);
+
+    
    
     
     // Set a timeout to ensure the transition works
@@ -118,7 +149,8 @@ document.addEventListener('DOMContentLoaded', function() {
   
 
       if (!fireData.error) {
-        messageDisplay.innerHTML = "🔥 Nearest fire: " + fireData.name + "<br>Lat: " + fireData.latitude + ", Lon: " + fireData.longitude;;
+        messageDisplay.innerHTML = "🔥 Nearest fire: " + fireData.name + "<br>Lat: " + fireData.latitude + ", Lon: " + fireData.longitude + "<br>" + "<br>";
+        messageDisplay.innerHTML += "Cell tower located at " + cellData.cellTowerName + " is in danger!";
 
         } else {
         messageDisplay.innerHTML = "There are no current fires nearby :D";
