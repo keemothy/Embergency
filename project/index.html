@@ -4,18 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Embergency Fire Locator</title>
-  <!-- Core Styles -->
+  <!-- Styles -->
   <link rel="stylesheet" href="src/styles/main.css">
 
-  <!-- Google Fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <!-- Tailwind (utility layer) -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Auto-scroll to features on first load -->
   <script>
     if (!window.location.hash) {
       window.location.replace(window.location.origin + window.location.pathname + '#features');
@@ -23,7 +21,7 @@
   </script>
 </head>
 <body class="font-[Poppins] text-white relative overflow-hidden">
-  <!-- Particle canvas -->
+  <!-- Particle -->
   <div id="particles" class="fixed inset-0 -z-10"></div>
 
   <!-- Navigation -->
@@ -35,26 +33,24 @@
       </h2>
       <ul class="hidden sm:flex space-x-6 text-sm font-medium">
         <li><a href="#" class="hover:text-[var(--ember-light)] transition">Home</a></li>
-        <li><a class="hover:text-[var(--ember-light)] transition">Features</a></li>
+        <!-- <li><a class="hover:text-[var(--ember-light)] transition">Features</a></li> -->
         <li><a href="contact.html" class="hover:text-[var(--ember-light)] transition">Contact</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Hero Section -->
   <main class="container mx-auto flex flex-col items-center justify-center text-center px-4 relative">
     <div class="content mt-24 max-w-3xl">
       <!-- Inline Logo -->
       <img src="https://i.postimg.cc/13j8GSN6/image-1.png" alt="Embergency logo" class="mx-auto w-44 md:w-52 mb-6" />
 
-      <!-- Hero Tagline -->
       <p class="mx-auto max-w-xl text-base md:text-lg font-light mb-8">
         Our revolutionary interface cross‑references active wildfire zones with cell‑tower coverage—helping first responders know exactly where emergency aid (and connectivity) is needed most.
       </p>
 
       <!-- Search -->
       <div class="input-container w-full max-w-xl mx-auto">
-        <input type="text" id="nature-input" placeholder="Enter location here...">
+        <input type="text" id="nature-input" placeholder="Enter city name here...">
         <button id="submit-btn">Send</button>
       </div>
 
