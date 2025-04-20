@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Embergency App</title>
+  <link rel="stylesheet" href="src/styles/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <div id="particles"></div>
+    <div class="content">
+      <h1>Where's the nearest fire to</h1>
+      <div class="input-container">
+
+        <input type="text" id="nature-input" placeholder="Enter location here...">
+        <button id="submit-btn">Send</button>
+        
+      </div>
+      <div id="message-display">
+        
+          <p id="nearest-fire"></p>
+          <h2 id="main-weather"></h2>
+          <p id="weather-description"></p>
+      
+      </div>
+    </div>
+  </div>
+
+  <script src="src/js/particles.js"></script>
+  <script src="src/js/gradients.js"></script>
+  <script src="src/js/main.js"></script>
+</body>
+</html>
