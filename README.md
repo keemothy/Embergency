@@ -2,7 +2,7 @@
 <p align='center'> A HackDavis 2025 Project for California Government Operations Agency (GovOps) track. As a team of four, we built Embergency, a web application that locates live wildfires and the nearest celluar tower that may be affected. </p>
 
 <h1 align='center'> Description </h1>
-<p align='center'> Given a user's input city, our application locates nearby fires and returns communication towers that are in danger of being compromised, allowing users to better prepare for fire response. This can be applicable for firefighters who need to quickly determine where they need to go, along with citizens who want to stay updated on their surroundings. </p>
+<p align='center'> Given a user's input city, our application locates nearby fires and returns communication towers that are in danger of being compromised, allowing users to better prepare for fire response. This can be applicable for firefighters who need to quickly determine where they need to go and citizens who want to stay updated on their surroundings. </p>
 
 <h1 align='center'> Demo </h1>
 
