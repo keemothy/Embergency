@@ -1,10 +1,13 @@
-# Embergency
-A HackDavis 2025 Project for California Government Operations Agency (GovOps) track. As a team of four, we built Embergency, a web application that locates live wildfires and nearest celluar tower that may be affected.
+<h1 align='center'> Embergency </h1>
+<p align='center'> A HackDavis 2025 Project for California Government Operations Agency (GovOps) track. As a team of four, we built Embergency, a web application that locates live wildfires and the nearest celluar tower that may be affected. </p>
 
-## Description
-Given a user's input city, our application locates nearby fires and return communications towers that are in danger of being compromised, allowing users to better prepare for fire response. This can be applied to firefighters who need to quickly determine where they should go next, along with citizens who want to stay updated on their surroundings.
+<h1 align='center'> Description </h1>
+<p align='center'> Given a user's input city, our application locates nearby fires and returns communication towers that are in danger of being compromised, allowing users to better prepare for fire response. This can be applicable for firefighters who need to quickly determine where they need to go, along with citizens who want to stay updated on their surroundings. </p>
 
-# Demo
+<h1 align='center'> Demo </h1>
+
+![embergency_demo](https://github.com/user-attachments/assets/c9effc91-4264-4844-bbb0-133bfa6a3c43)
+
 
 ## Technologies Used
 
@@ -27,5 +30,7 @@ Given a user's input city, our application locates nearby fires and return commu
 * David Estrella
 
 ## Future Integrations
-* Integrate a visual map (preferably Google Maps API)
-* Partner with cellphone providers to send out alerts 
+* Integrate a visual map with landmarks mapping to both fires and communication towers (Google Maps API)
+* Consider wind directions, speed, and fire containment percentages to determine evacuation preparations
+* Partner with cellphone providers to send alerts about potentially hazardous locations
+* Locate nearby evacuation zones for citizens
