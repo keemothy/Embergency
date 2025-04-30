@@ -1,6 +1,5 @@
-
 // api key for openweathermap
-const apiKey = process.env.apiKey;
+// const apiKey = process.env.apiKey;
 
 // urls for openweathermap
 const geocodingUrl = "http://api.openweathermap.org/geo/1.0/direct?q=";
@@ -9,24 +8,64 @@ const nearestFire = document.getElementById('nearest-fire');
 const weatherDisplay = document.getElementById('aisplay');
 
 
+// async function getLatLon(city) {
+//   const url = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + apiKey;
+//   // const url = `http://localhost:3000/api/latlon?city=${city}`;
+
+
+//   const response = await fetch(url);
+//   const data = await response.json(); 
+
+//   return {
+//     "lat": data[0].lat,
+//     "lon": data[0].lon
+//   }
+// }
+
+// NEW
 async function getLatLon(city) {
-  const url = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + apiKey;
-
+  const url = `http://localhost:3000/api/latlon?city=${encodeURIComponent(city)}`;
   const response = await fetch(url);
-  const data = await response.json(); 
+  const data = await response.json();
 
-  return {
-    "lat": data[0].lat,
-    "lon": data[0].lon
+  if (!data || data.length === 0) {
+    throw new Error("No matching location found");
   }
+  
+  return {
+    lat: data[0].lat,
+    lon: data[0].lon
+  };
 }
 
-async function getNearestFire(lat, lon) {
-  const clientId = process.env.clientId;
-  const clientSecret = process.env.clientSecret;
-  const place = lat + "," + lon;
-  const url = "https://data.api.xweather.com/fires/closest?p=" + place + "&format=json&client_id=" + clientId + "&client_secret=" + clientSecret;
+// async function getNearestFire(lat, lon) {
+//   const clientId = process.env.clientId;
+//   const clientSecret = process.env.clientSecret;
+//   const place = lat + "," + lon;
+//   const url = "https://data.api.xweather.com/fires/closest?p=" + place + "&format=json&client_id=" + clientId + "&client_secret=" + clientSecret;
 
+//   try {
+//     const response = await fetch(url);
+//     const data = await response.json();
+
+//     if (data && data.response && data.response.length > 0) {
+//       return {
+//         latitude: data.response[0].loc.lat,
+//         longitude: data.response[0].loc.long,
+//         name: data.response[0].report.name
+//       };
+//     } else {
+//       return { error: "No fire data found" };
+//     }
+//   } catch (error) {
+//     console.error("Failed to fetch fire data:", error);
+//     return { error: "Something went wrong."};
+//   }
+// }
+
+// NEW
+async function getNearestFire(lat, lon) {
+  const url = `http://localhost:3000/api/fire?lat=${lat}&lon=${lon}`;
   try {
     const response = await fetch(url);
     const data = await response.json();
@@ -42,16 +81,37 @@ async function getNearestFire(lat, lon) {
     }
   } catch (error) {
     console.error("Failed to fetch fire data:", error);
-    return { error: "Something went wrong."};
+    return { error: "Something went wrong." };
   }
 }
 
-async function getCellTowers(currLat, currLon) {
-  const cellKey = process.env.cellKey;
-  const cellTowerUrl = "https://us1.unwiredlabs.com/v2/reverse?token=" + cellKey + "&lat=" + currLat + "&lon=" + currLon;
+
+// async function getCellTowers(currLat, currLon) {
+//   const cellKey = process.env.cellKey;
+//   const cellTowerUrl = "https://us1.unwiredlabs.com/v2/reverse?token=" + cellKey + "&lat=" + currLat + "&lon=" + currLon;
   
+//   try {
+//     const response = await fetch(cellTowerUrl);
+//     const data = await response.json();
+
+//     if (data && data.address && data.address.display_name) {
+//       return {
+//         cellTowerName: data.address.display_name
+//       };
+//     } else {
+//       return { error: "No address data found" };
+//     }
+//   } catch (error) {
+//     console.error("Failed to fetch cell tower data:", error);
+//     return { error: "Something went wrong." };
+//   }
+// }
+
+//NEW
+async function getCellTowers(lat, lon) {
+  const url = `http://localhost:3000/api/celltower?lat=${lat}&lon=${lon}`;
   try {
-    const response = await fetch(cellTowerUrl);
+    const response = await fetch(url);
     const data = await response.json();
 
     if (data && data.address && data.address.display_name) {
@@ -66,6 +126,8 @@ async function getCellTowers(currLat, currLon) {
     return { error: "Something went wrong." };
   }
 }
+
+
 
 
 // Main application functionality
