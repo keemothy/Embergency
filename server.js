@@ -5,7 +5,7 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 
@@ -60,12 +60,14 @@ app.get('/api/celltower', async (req, res) => {
   }
 });
 
+// serve Vite build files from /project/dist
 app.use(express.static(path.join(__dirname, 'project', 'dist')));
 
+// Fallback for SPA routing (MUST be '*', not a URL or invalid string)
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'project', 'dist', 'index.html'));
 });
 
 app.listen(PORT, () => {
-  console.log(`Backend running at http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
