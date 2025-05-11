@@ -6,9 +6,9 @@ const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
-app.use(cors());
+app.use(cors()); // Allow frontend to request from this backend
 
-// Get lat/lon from city name (OpenWeatherMap)
+// 🔹 1. Get lat/lon from city name (OpenWeatherMap)
 app.get('/api/latlon', async (req, res) => {
   const { city } = req.query;
   if (!city) return res.status(400).json({ error: 'Missing city parameter' });
@@ -25,7 +25,7 @@ app.get('/api/latlon', async (req, res) => {
   }
 });
 
-// Get nearest fire (xWeather)
+// 🔹 2. Get nearest fire (xWeather)
 app.get('/api/fire', async (req, res) => {
   const { lat, lon } = req.query;
   if (!lat || !lon) return res.status(400).json({ error: 'Missing lat or lon' });
@@ -42,7 +42,7 @@ app.get('/api/fire', async (req, res) => {
   }
 });
 
-// Get cell tower info (Unwired Labs)
+// 🔹 3. Get cell tower info (Unwired Labs)
 app.get('/api/celltower', async (req, res) => {
   const { lat, lon } = req.query;
   if (!lat || !lon) return res.status(400).json({ error: 'Missing lat or lon' });
@@ -60,5 +60,5 @@ app.get('/api/celltower', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Backend running at http://localhost:${PORT}`);
+  console.log(`✅ Backend running at http://localhost:${PORT}`);
 });
