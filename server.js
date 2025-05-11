@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const fetch = require('node-fetch');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 const PORT = 3000;
@@ -57,6 +58,12 @@ app.get('/api/celltower', async (req, res) => {
     console.error(err);
     res.status(500).json({ error: 'Failed to fetch cell tower info' });
   }
+});
+
+app.use(express.static(path.join(__dirname, 'project', 'dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'project', 'dist', 'index.html'));
 });
 
 app.listen(PORT, () => {
